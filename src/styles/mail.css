@@ -66,6 +66,8 @@
   margin-left: 24px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .list-action-btn {
@@ -204,6 +206,10 @@
   padding-left: 8px;
   padding-right: 8px;
 }
+.compose-mail:hover {
+  box-shadow: 4px 4px 8px 0px rgb(201, 201, 201);
+  transition: background-color 0.5s ease;
+}
 .compose-mail-text {
   color: black;
   font-size: 20px;
@@ -286,4 +292,12 @@
 .drawer-list-label-item:hover {
   background-color: rgb(228, 228, 228);
   transition: background-color 0.5s ease;
+}
+
+.devider {
+  width: 2px;
+  height: 20px;
+  background-color: rgb(212, 212, 212);
+  margin-left: 12px;
+  margin-right: 12px;
 }

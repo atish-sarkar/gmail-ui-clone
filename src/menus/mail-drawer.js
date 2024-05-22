@@ -115,7 +115,7 @@ function MailDrawer() {
 
   return (
     <div className="drawer-container">
-      <div className="compose-mail">
+      <div className="compose-mail pointer">
         <MdModeEditOutline size={26} color="black" />
         <span className="compose-mail-text">Compose</span>
       </div>

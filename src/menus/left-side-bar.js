@@ -40,6 +40,13 @@ import { IoSearch } from "react-icons/io5";
 // mix icon
 import { RxMixerHorizontal } from "react-icons/rx";
 
+const MailTooltip = () => {
+  return <span class={"tooltip-container position-mail"}>Tooltip text</span>;
+};
+const ChatTooltip = () => {
+  return <span class={"tooltip-container position-chat"}>Tooltip text</span>;
+};
+
 const menus = [
   {
     id: "1",
@@ -49,6 +56,7 @@ const menus = [
     inactiveIcon: (
       <MdOutlineEmail size={18} color="#000" className="menu-title" />
     ),
+    tooltip: <MailTooltip />,
   },
   {
     id: "2",
@@ -58,6 +66,7 @@ const menus = [
     inactiveIcon: (
       <IoChatboxOutline size={18} color="#000" className="menu-title" />
     ),
+    tooltip: <ChatTooltip />,
   },
   {
     id: "3",
@@ -112,7 +121,9 @@ function LeftSideBar({ Component, pageProps }) {
                 setActiveMenu(menu);
                 router.push(menu.link);
               }}
-              className="menu"
+              className={`menu ${
+                activeMenu.id !== menu.id && menu.tooltip && "tooltip"
+              }`}
             >
               <div
                 className={`menu-icon ${
@@ -124,6 +135,7 @@ function LeftSideBar({ Component, pageProps }) {
                   : menu.inactiveIcon}
               </div>
               <span>{menu.title}</span>
+              {activeMenu.id !== menu.id && menu.tooltip}
             </div>
           ))}
         </div>

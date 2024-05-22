@@ -16,6 +16,12 @@ import { MdOutlineArchive } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { RiMailUnreadLine } from "react-icons/ri";
 import { ImClock } from "react-icons/im";
+import { IoIosCheckboxOutline } from "react-icons/io";
+import { MdOutlineIndeterminateCheckBox } from "react-icons/md";
+import { TbAlertOctagon } from "react-icons/tb";
+import { TbClockPlus } from "react-icons/tb";
+import { MdLabelOutline } from "react-icons/md";
+import { MdDriveFileMoveOutline } from "react-icons/md";
 
 const dummyMails = [
   {
@@ -156,6 +162,12 @@ function Mail({ toggle }) {
     }
   };
 
+  const handleSelectAll = (mails) => {
+    mails.forEach((element) => {
+      setSelectedMails((prev) => [...prev, element.id]);
+    });
+  };
+
   return (
     <div className="mail-container">
       <div className={`${toggle ? "hide" : ""} mail-drawer`}>
@@ -166,19 +178,67 @@ function Mail({ toggle }) {
           <div className="left-action-btns">
             <div className="selection-action-btns">
               <div className="check">
-                <MdCheckBoxOutlineBlank size={18} color="#000" />
+                {selectedMails.length < 1 ? (
+                  <div onClick={() => handleSelectAll(dummyMails)}>
+                    <MdCheckBoxOutlineBlank size={18} color="#000" />
+                  </div>
+                ) : selectedMails.length === dummyMails.length ? (
+                  <div onClick={() => setSelectedMails([])}>
+                    <IoIosCheckboxOutline size={18} color="#000" />
+                  </div>
+                ) : (
+                  <div onClick={() => setSelectedMails([])}>
+                    <MdOutlineIndeterminateCheckBox size={18} color="#000" />
+                  </div>
+                )}
               </div>
               <div className="check">
                 <IoCaretDownOutline size={18} color="#000" />
               </div>
             </div>
             <div className="list-action-btns">
-              <div className="list-action-btn">
-                <RxReload size={18} color="#000" />
-              </div>
-              <div className="list-action-btn">
-                <CiMenuKebab size={18} color="#000" />
-              </div>
+              {selectedMails.length === dummyMails.length ? (
+                <>
+                  <div className="list-action-btn">
+                    <MdOutlineArchive size={20} color="gray" />
+                  </div>
+                  <div className="list-action-btn">
+                    <TbAlertOctagon size={20} color="gray" />
+                  </div>
+                  <div className="list-action-btn">
+                    <RiDeleteBin6Line size={18} color="gray" />
+                  </div>
+                  <div className="devider" />
+                  <div className="list-action-btn">
+                    <RiMailUnreadLine size={18} color="gray" />
+                  </div>
+                  <div className="list-action-btn">
+                    <ImClock size={16} color="gray" />
+                  </div>
+                  <div className="list-action-btn">
+                    <TbClockPlus size={18} color="gray" />
+                  </div>
+                  <div className="devider" />
+                  <div className="list-action-btn">
+                    <MdDriveFileMoveOutline size={18} color="gray" />
+                  </div>
+                  <div className="list-action-btn">
+                    <MdLabelOutline size={18} color="gray" />
+                  </div>
+                  <div className="list-action-btn">
+                    <CiMenuKebab size={18} color="gray" />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="list-action-btn">
+                    <RxReload size={18} color="#000" />
+                  </div>
+                  <div className="list-action-btn">
+                    <CiMenuKebab size={18} color="#000" />
+                  </div>
+                </>
+              )}
             </div>
           </div>
           <div className="right-action-btns">
