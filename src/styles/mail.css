@@ -1,0 +1,238 @@
+.mail-container {
+  display: flex;
+  width: 100%;
+}
+.mail-drawer {
+  width: 16vw;
+  /* justify-content: center;
+  align-items: center; */
+  /* display: flex; */
+}
+.mail-listing {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.mail-header {
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  border-radius: 12px 12px 0px 0px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.mail-list {
+  /* background-color: #eaf1fb; */
+  height: 100%;
+}
+
+.left-action-btns {
+  margin-left: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-action-btns {
+  margin-right: 16px;
+}
+
+.check {
+  height: 40px;
+  width: 30px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 4px;
+}
+.check:hover {
+  background-color: #eaf1fb;
+}
+
+.selection-action-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.list-action-btns {
+  margin-left: 24px;
+  display: flex;
+  flex-direction: row;
+}
+
+.list-action-btn {
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.list-action-btn:hover {
+  background-color: #eaf1fb;
+}
+
+.content-count {
+  margin-right: 24px;
+  cursor: default !important;
+}
+
+.pagination-arrows {
+  width: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #eaf1fb;
+  overflow: scroll;
+}
+
+.table td,
+.table th {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* .table tr:nth-child(even) {
+  background-color: #f2f2f2;
+} */
+
+.table tr:hover {
+  /* background-color: #fff; */
+  box-shadow: 4px 4px 8px 0px rgb(201, 201, 201);
+}
+
+.view {
+  display: inline-flex;
+  visibility: hidden;
+  cursor: grab;
+}
+
+.check-box-content {
+  display: flex;
+  flex-direction: row;
+  margin-left: -4px;
+}
+
+.table tr:hover .view {
+  /* display: inline; */
+  visibility: visible;
+}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: white;
+}
+
+.check-box {
+  width: 24px;
+  cursor: pointer;
+}
+.dot {
+  width: 4px;
+}
+.star {
+  width: 20px;
+  cursor: pointer;
+}
+.operation-btns {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.table tr:hover .time {
+  width: 120px;
+}
+
+.table tr:hover .time-text {
+  display: none;
+}
+.table tr:hover .operation-btns {
+  display: flex;
+}
+.time {
+  width: 60px;
+  text-align: right;
+  font-size: 14px;
+}
+.name {
+  width: 200px;
+}
+.subject {
+  /* width: 100%; */
+  text-align: left;
+}
+.hide {
+  display: none !important;
+}
+
+/* mail drawer */
+.compose-mail {
+  height: 50px;
+  width: 120px;
+  background-color: #c2e7ff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.compose-mail-text {
+  color: black;
+  font-size: 20px;
+  /* font-weight: bold; */
+}
+
+.drawer-list-menus {
+  display: flex;
+  flex-direction: column;
+  margin-top: 22px;
+  width: 94%;
+}
+.drawer-list-menu-item {
+  margin-top: 4px;
+  padding: 6px 16px 6px 16px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.drawer-list-menu-item span {
+  font-size: 18px;
+  margin-left: 8px;
+}
+.active {
+  background-color: #a8c7fa;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.drawer-list-menu-item + .inactive:hover {
+  background-color: rgb(228, 228, 228);
+  transition: background-color 0.5s ease;
+}
+
+.drawer-container {
+}
+.show {
+  background-color: rgb(228, 228, 228);
+}
