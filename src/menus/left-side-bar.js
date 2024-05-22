@@ -104,29 +104,29 @@ function LeftSideBar({ Component, pageProps }) {
             onClick={() => setToggle(!toggle)}
           />
         </div>
-        <ul>
+        <div>
           {menus.map((menu, i) => (
-            <li
-              onMouseDown={() => {
-                setActiveMenu(menu);
-              }}
+            <div
               key={i}
+              onClick={() => {
+                setActiveMenu(menu);
+                router.push(menu.link);
+              }}
+              className="menu"
             >
-              <div onClick={() => router.push(menu.link)} className="menu">
-                <div
-                  className={`menu-icon ${
-                    activeMenu.id === menu.id ? "active" : ""
-                  }`}
-                >
-                  {activeMenu.id === menu.id
-                    ? menu.activeIcon
-                    : menu.inactiveIcon}
-                </div>
-                <span>{menu.title}</span>
+              <div
+                className={`menu-icon ${
+                  activeMenu.id === menu.id ? "active" : ""
+                }`}
+              >
+                {activeMenu.id === menu.id
+                  ? menu.activeIcon
+                  : menu.inactiveIcon}
               </div>
-            </li>
+              <span>{menu.title}</span>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
       <div className="page-container">
         <div className="app-bar">
