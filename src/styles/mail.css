@@ -15,6 +15,7 @@
 }
 .mail-header {
   background-color: white;
+  transition: background-color 0.5s ease;
   height: 50px;
   width: 100%;
   border-radius: 12px 12px 0px 0px;
@@ -50,6 +51,7 @@
 }
 .check:hover {
   background-color: #eaf1fb;
+  transition: background-color 0.5s ease;
 }
 
 .selection-action-btns {
@@ -77,6 +79,7 @@
 }
 .list-action-btn:hover {
   background-color: #eaf1fb;
+  transition: background-color 0.5s ease;
 }
 
 .content-count {
@@ -96,8 +99,13 @@
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  background-color: #eaf1fb;
+  background-color: #ecf2fc;
+  /* transition: background-color 0.5s ease; */
   overflow: scroll;
+}
+
+.selected {
+  background-color: #a7c8ff !important;
 }
 
 .table td,
@@ -113,6 +121,7 @@
 .table tr:hover {
   /* background-color: #fff; */
   box-shadow: 4px 4px 8px 0px rgb(201, 201, 201);
+  transition: background-color 0.5s ease;
 }
 
 .view {
@@ -187,6 +196,7 @@
   height: 50px;
   width: 120px;
   background-color: #c2e7ff;
+  transition: background-color 0.5s ease;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -215,11 +225,12 @@
   align-items: center;
 }
 .drawer-list-menu-item span {
-  font-size: 18px;
+  font-size: 14px;
   margin-left: 8px;
 }
 .active {
   background-color: #a8c7fa;
+  transition: background-color 0.5s ease;
 }
 
 .pointer {
@@ -235,4 +246,44 @@
 }
 .show {
   background-color: rgb(228, 228, 228);
+  transition: background-color 0.5s ease;
+}
+
+.drawer-list-menu-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.label-text {
+  font-size: 20px;
+}
+.label-add-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.label-add-icon:hover {
+  background-color: #a8c7fa;
+  transition: background-color 0.5s ease;
+}
+
+.drawer-list-label-item {
+  margin-top: 4px;
+  padding: 6px 16px 6px 16px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.drawer-list-label-item span {
+  font-size: 14px;
+  margin-left: 8px;
+}
+.drawer-list-label-item:hover {
+  background-color: rgb(228, 228, 228);
+  transition: background-color 0.5s ease;
 }

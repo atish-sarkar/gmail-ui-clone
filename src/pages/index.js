@@ -197,7 +197,12 @@ function Mail({ toggle }) {
           <table className="table">
             <tbody>
               {dummyMails.map((mail, i) => (
-                <tr key={i}>
+                <tr
+                  key={i}
+                  className={`${
+                    selectedMails.includes(mail.id) ? "selected" : ""
+                  }`}
+                >
                   <td
                     className="check-box"
                     onClick={() => handleSelect(mail.id)}

@@ -15,6 +15,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdLabelOutline } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
+import { MdLabel } from "react-icons/md";
 
 const firstListItems = [
   {
@@ -85,6 +86,28 @@ const secondListItems = [
     icon: <IoMdAdd size={18} color="black" />,
   },
 ];
+const labelListItems = [
+  {
+    id: 1,
+    title: "College",
+    color: "red",
+  },
+  {
+    id: 2,
+    title: "School",
+    color: "orange",
+  },
+  {
+    id: 3,
+    title: "Coaching",
+    color: "#000",
+  },
+  {
+    id: 4,
+    title: "Sports",
+    color: "blue",
+  },
+];
 
 function MailDrawer() {
   const [opened, setOpened] = useState(false);
@@ -135,6 +158,25 @@ function MailDrawer() {
             ))}
           </>
         )}
+        <div className="drawer-list-menus">
+          <div
+            onClick={() => setOpened(!opened)}
+            className="drawer-list-menu-label"
+          >
+            <span className="label-text">Labels</span>
+            <div className="pointer label-add-icon">
+              <IoMdAdd size={18} color="black" />
+            </div>
+          </div>
+          {labelListItems.map((item, index) => (
+            <div className="drawer-list-label-item pointer" key={index}>
+              <div>
+                <MdLabel size={18} color={item.color} />
+              </div>
+              <span>{item.title}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
