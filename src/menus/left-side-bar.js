@@ -39,12 +39,27 @@ import { IoSearch } from "react-icons/io5";
 
 // mix icon
 import { RxMixerHorizontal } from "react-icons/rx";
+// pen icon
+import { MdModeEditOutline } from "react-icons/md";
 
 const MailTooltip = () => {
-  return <span class={"tooltip-container position-mail"}>Tooltip text</span>;
+  return (
+    <div class={"tooltip-container position-mail"}>
+      <div className="tooltip-top-bar">
+        <MdModeEditOutline size={26} color="black" />
+        <span className="compose-mail-text">Compose</span>
+      </div>
+    </div>
+  );
 };
 const ChatTooltip = () => {
-  return <span class={"tooltip-container position-chat"}>Tooltip text</span>;
+  return (
+    <div class={"tooltip-container position-mail"}>
+      <div className="tooltip-top-bar">
+        <h1>Tooltip text</h1>
+      </div>
+    </div>
+  );
 };
 
 const menus = [
@@ -83,7 +98,7 @@ const Search = () => {
   return (
     <div className="global-search">
       <div className="search-icon">
-        <IoSearch size={28} color="black" />
+        <IoSearch size={28} color="gray" />
       </div>
       <input
         type="text"
@@ -91,7 +106,7 @@ const Search = () => {
         placeholder="Search in emails"
       />
       <div className="filter-icon">
-        <RxMixerHorizontal size={28} color="black" />
+        <RxMixerHorizontal size={28} color="gray" />
       </div>
     </div>
   );
