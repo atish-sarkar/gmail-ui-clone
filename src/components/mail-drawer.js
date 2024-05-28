@@ -109,73 +109,95 @@ const labelListItems = [
   },
 ];
 
-function MailDrawer() {
+function MailDrawer({ isHoverTheme, setHoverOn }) {
+  // console.log("hoverOn", hoverOn);
   const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState(firstListItems[0]);
-
+  const [selected, setSelected] = useState(
+    isHoverTheme ? {} : firstListItems[0]
+  );
+  function handleLeave(e) {
+    const { clientX, clientY } = e;
+    if (clientX > 8 && clientX < 58 && clientY) {
+    }
+  }
   return (
-    <div className="drawer-container">
-      <div className="compose-mail pointer">
-        <MdModeEditOutline size={26} color="black" />
-        <span className="compose-mail-text">Compose</span>
-      </div>
-      <div className="drawer-list-menus">
-        {firstListItems.map((item, index) => (
-          <div
-            className={`drawer-list-menu-item ${
-              selected.id === item.id ? "active" : "inactive"
-            } pointer`}
-            key={index}
-          >
-            <div>{item.icon}</div>
-            <span>{item.title}</span>
-          </div>
-        ))}
+    <div
+      className={`drawer-container ${isHoverTheme ? "hover-theme" : ""}`}
+      onMouseLeave={handleLeave}
+    >
+      <div
+        className={`compose-mail-container ${
+          isHoverTheme ? "compose-mail-container-bg-hover" : ""
+        }`}
+      >
         <div
-          className="drawer-list-menu-item pointer show"
-          onClick={() => setOpened(!opened)}
+          className={`compose-mail pointer ${isHoverTheme ? "remove-bg" : ""}`}
         >
-          {opened ? (
-            <IoIosArrowUp size={18} color="black" />
-          ) : (
-            <IoIosArrowDown size={18} color="black" />
-          )}
-
-          <span>{opened ? "Less" : "More"}</span>
+          <MdModeEditOutline size={26} color="black" />
+          <span className="compose-mail-text">Compose</span>
         </div>
-        {opened && (
-          <>
-            {secondListItems.map((item, index) => (
-              <div
-                className={`drawer-list-menu-item ${
-                  selected.id === item.id ? "active" : "inactive"
-                } pointer`}
-                key={index}
-              >
-                <div>{item.icon}</div>
-                <span>{item.title}</span>
-              </div>
-            ))}
-          </>
-        )}
+      </div>
+      <div className="drawer-list-container">
         <div className="drawer-list-menus">
-          <div
-            onClick={() => setOpened(!opened)}
-            className="drawer-list-menu-label"
-          >
-            <span className="label-text">Labels</span>
-            <div className="pointer label-add-icon">
-              <IoMdAdd size={18} color="black" />
-            </div>
-          </div>
-          {labelListItems.map((item, index) => (
-            <div className="drawer-list-label-item pointer" key={index}>
-              <div>
-                <MdLabel size={18} color={item.color} />
-              </div>
+          {firstListItems.map((item, index) => (
+            <div
+              onClick={() => setSelected(item)}
+              className={`drawer-list-menu-item ${
+                selected.id === item.id ? "active" : "inactive"
+              } pointer`}
+              key={index}
+            >
+              <div>{item.icon}</div>
               <span>{item.title}</span>
             </div>
           ))}
+          <div
+            className="drawer-list-menu-item pointer show"
+            onClick={() => setOpened(!opened)}
+          >
+            {opened ? (
+              <IoIosArrowUp size={18} color="black" />
+            ) : (
+              <IoIosArrowDown size={18} color="black" />
+            )}
+
+            <span>{opened ? "Less" : "More"}</span>
+          </div>
+          {opened && (
+            <>
+              {secondListItems.map((item, index) => (
+                <div
+                  onClick={() => setSelected(item)}
+                  className={`drawer-list-menu-item ${
+                    selected.id === item.id ? "active" : "inactive"
+                  } pointer`}
+                  key={index}
+                >
+                  <div>{item.icon}</div>
+                  <span>{item.title}</span>
+                </div>
+              ))}
+            </>
+          )}
+          <div className="drawer-list-menus">
+            <div
+              onClick={() => setOpened(!opened)}
+              className="drawer-list-menu-label"
+            >
+              <span className="label-text">Labels</span>
+              <div className="pointer label-add-icon">
+                <IoMdAdd size={18} color="black" />
+              </div>
+            </div>
+            {labelListItems.map((item, index) => (
+              <div className="drawer-list-label-item pointer" key={index}>
+                <div>
+                  <MdLabel size={18} color={item.color} />
+                </div>
+                <span>{item.title}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

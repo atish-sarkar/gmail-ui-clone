@@ -189,26 +189,41 @@
   /* width: 100%; */
   text-align: left;
 }
+
 .hide {
   display: none !important;
 }
+.compose-mail-container {
+  padding: 12px;
+  border-radius: 12px 12px 0px 0px;
+}
 
+.compose-mail-container-bg-hover {
+  background-color: #eaf1fb;
+}
 /* mail drawer */
 .compose-mail {
   height: 50px;
   width: 120px;
-  background-color: #c2e7ff;
-  transition: background-color 0.5s ease;
   justify-content: center;
   align-items: center;
   display: flex;
   border-radius: 12px;
   padding-left: 8px;
   padding-right: 8px;
+  background-color: #a7c8ff;
+  transition: background-color 0.5s ease;
 }
+.remove-bg {
+  background-color: transparent !important;
+}
+.remove-bg:hover {
+  background-color: #eaf1fb !important;
+}
+
 .compose-mail:hover {
   box-shadow: 4px 4px 8px 0px rgb(201, 201, 201);
-  transition: background-color 0.5s ease;
+  transition: box-shadow 0.5s ease;
 }
 .compose-mail-text {
   color: black;
@@ -233,6 +248,7 @@
 .drawer-list-menu-item span {
   font-size: 14px;
   margin-left: 8px;
+  color: black;
 }
 .active {
   background-color: #a8c7fa;
@@ -249,7 +265,22 @@
 }
 
 .drawer-container {
+  display: flex;
+  height: 96%;
+  flex-direction: column;
+  margin-right: 4px;
 }
+.drawer-list-container {
+  padding-left: 12px;
+  padding-top: 12px;
+}
+
+.hover-theme {
+  box-shadow: 0px 0px 4px 4px rgb(201, 201, 201);
+  z-index: 1;
+  border-radius: 12px;
+}
+
 .show {
   background-color: rgb(228, 228, 228);
   transition: background-color 0.5s ease;
@@ -263,6 +294,7 @@
 }
 .label-text {
   font-size: 20px;
+  color: black;
 }
 .label-add-icon {
   height: 40px;
@@ -288,6 +320,7 @@
 .drawer-list-label-item span {
   font-size: 14px;
   margin-left: 8px;
+  color: black;
 }
 .drawer-list-label-item:hover {
   background-color: rgb(228, 228, 228);

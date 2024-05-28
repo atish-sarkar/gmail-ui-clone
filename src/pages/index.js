@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import MailDrawer from "@/menus/mail-drawer";
+import MailDrawer from "@/components/mail-drawer";
+import ChatDrawer from "@/components/chat-drawer";
 
 // icons
 import { IoIosCheckbox } from "react-icons/io";
@@ -170,9 +171,17 @@ function Mail({ toggle }) {
 
   return (
     <div className="mail-container">
-      <div className={`${toggle ? "hide" : ""} mail-drawer`}>
-        <MailDrawer />
-      </div>
+      {/* <div className={`${toggle ? "hide" : ""} mail-drawer`}>
+        {hoverOn === "2" ? (
+          <ChatDrawer
+            hoverOn={hoverOn}
+            isHoverTheme={true}
+            setHoverOnDrawer={setHoverOnDrawer}
+          />
+        ) : (
+          <MailDrawer hoverOn={hoverOn} isHoverTheme={false} />
+        )}
+      </div> */}
       <div className="mail-listing">
         <div className="mail-header">
           <div className="left-action-btns">

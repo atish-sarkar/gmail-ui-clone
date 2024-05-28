@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import RightSideBar from "./right-side-bar";
 
 // menu icon
@@ -39,28 +38,8 @@ import { IoSearch } from "react-icons/io5";
 
 // mix icon
 import { RxMixerHorizontal } from "react-icons/rx";
-// pen icon
-import { MdModeEditOutline } from "react-icons/md";
-
-const MailTooltip = () => {
-  return (
-    <div class={"tooltip-container position-mail"}>
-      <div className="tooltip-top-bar">
-        <MdModeEditOutline size={26} color="black" />
-        <span className="compose-mail-text">Compose</span>
-      </div>
-    </div>
-  );
-};
-const ChatTooltip = () => {
-  return (
-    <div class={"tooltip-container position-mail"}>
-      <div className="tooltip-top-bar">
-        <h1>Tooltip text</h1>
-      </div>
-    </div>
-  );
-};
+import MailDrawer from "@/components/mail-drawer";
+import ChatDrawer from "@/components/chat-drawer";
 
 const menus = [
   {
@@ -71,7 +50,6 @@ const menus = [
     inactiveIcon: (
       <MdOutlineEmail size={18} color="#000" className="menu-title" />
     ),
-    tooltip: <MailTooltip />,
   },
   {
     id: "2",
@@ -81,7 +59,6 @@ const menus = [
     inactiveIcon: (
       <IoChatboxOutline size={18} color="#000" className="menu-title" />
     ),
-    tooltip: <ChatTooltip />,
   },
   {
     id: "3",
@@ -115,10 +92,36 @@ const Search = () => {
 function LeftSideBar({ Component, pageProps }) {
   const [activeMenu, setActiveMenu] = useState(menus[0]);
   const [toggle, setToggle] = useState(false);
+  const [hoverOn, setHoverOn] = useState(null);
+
   const router = useRouter();
 
+  const handleMenuChange = (menu) => {
+    setActiveMenu(menu);
+    router.push(menu.link);
+  };
+
+  const handleMouseEnter = (id) => {
+    if (activeMenu.id === id || id === "3") {
+      setHoverOn(null);
+    } else {
+      setHoverOn(id);
+    }
+  };
+
+  function handleMouseMove(e) {
+    const { clientX, clientY } = e;
+    if (clientX > 8 && clientY < 162 && clientY > 84) {
+      return;
+    }
+    setHoverOn(null);
+  }
+
   return (
-    <div className="left-side-bar-container">
+    <div
+      className="left-side-bar-container"
+      // onMouseMove={(e) => console.log(e.clientY)}
+    >
       <div className="left-menus">
         <div className="menu-drawer">
           <IoMdMenu
@@ -132,13 +135,10 @@ function LeftSideBar({ Component, pageProps }) {
           {menus.map((menu, i) => (
             <div
               key={i}
-              onClick={() => {
-                setActiveMenu(menu);
-                router.push(menu.link);
-              }}
-              className={`menu ${
-                activeMenu.id !== menu.id && menu.tooltip && "tooltip"
-              }`}
+              onClick={() => handleMenuChange(menu)}
+              className="menu"
+              onMouseEnter={() => handleMouseEnter(menu.id)}
+              onMouseLeave={(e) => handleMouseMove(e)}
             >
               <div
                 className={`menu-icon ${
@@ -150,7 +150,6 @@ function LeftSideBar({ Component, pageProps }) {
                   : menu.inactiveIcon}
               </div>
               <span>{menu.title}</span>
-              {activeMenu.id !== menu.id && menu.tooltip}
             </div>
           ))}
         </div>
@@ -194,6 +193,39 @@ function LeftSideBar({ Component, pageProps }) {
           </div>
         </div>
         <div className="mid-page">
+          <div className={`${toggle ? "hide" : ""} mail-drawer`}>
+            {activeMenu.id === "1" ? (
+              hoverOn !== "2" ? (
+                <MailDrawer
+                  hoverOn={hoverOn}
+                  isHoverTheme={hoverOn === "1"}
+                  setHoverOn={setHoverOn}
+                />
+              ) : (
+                <ChatDrawer
+                  hoverOn={hoverOn}
+                  isHoverTheme={hoverOn === "2"}
+                  setHoverOn={setHoverOn}
+                />
+              )
+            ) : activeMenu.id === "2" ? (
+              hoverOn !== "1" ? (
+                <ChatDrawer
+                  hoverOn={hoverOn}
+                  isHoverTheme={hoverOn === "2"}
+                  setHoverOn={setHoverOn}
+                />
+              ) : (
+                <MailDrawer
+                  hoverOn={hoverOn}
+                  isHoverTheme={hoverOn === "1"}
+                  setHoverOn={setHoverOn}
+                />
+              )
+            ) : (
+              <></>
+            )}
+          </div>
           <Component {...pageProps} toggle={toggle} />
           <RightSideBar />
         </div>
