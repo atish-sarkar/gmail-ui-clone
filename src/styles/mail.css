@@ -218,10 +218,10 @@
   background-color: transparent !important;
 }
 .remove-bg:hover {
-  background-color: #eaf1fb !important;
+  background-color: #f7fbff !important;
 }
 
-.compose-mail:hover {
+.normal-hover:hover {
   box-shadow: 4px 4px 8px 0px rgb(201, 201, 201);
   transition: box-shadow 0.5s ease;
 }
@@ -250,18 +250,19 @@
   margin-left: 8px;
   color: black;
 }
+
 .active {
-  background-color: #a8c7fa;
-  transition: background-color 0.5s ease;
+  background-color: #a8c7fa !important;
+  transition: background-color 0.5s ease !important;
 }
 
 .pointer {
   cursor: pointer;
 }
 
-.drawer-list-menu-item + .inactive:hover {
-  background-color: rgb(228, 228, 228);
-  transition: background-color 0.5s ease;
+.inactive:hover {
+  background-color: rgb(228, 228, 228) !important;
+  transition: background-color 0.5s ease !important;
 }
 
 .drawer-container {

@@ -107,14 +107,35 @@ function LeftSideBar({ Component, pageProps }) {
     } else {
       setHoverOn(id);
     }
+    return;
   };
 
-  function handleMouseMove(e) {
+  function handleMouseMove(e, id) {
     const { clientX, clientY } = e;
-    if (clientX > 8 && clientY < 162 && clientY > 84) {
+    if (clientX < 8) {
+      setHoverOn(null);
       return;
     }
-    setHoverOn(null);
+    if (id === "1") {
+      if (clientY < 94) {
+        setHoverOn(null);
+        return;
+      }
+      if (clientY > 156) {
+        setHoverOn(null);
+        return;
+      }
+    } else if (id === "2") {
+      if (clientY < 208) {
+        setHoverOn(null);
+        return;
+      }
+      if (clientY > 218) {
+        setHoverOn(null);
+        return;
+      }
+    }
+    return;
   }
 
   return (
@@ -138,7 +159,7 @@ function LeftSideBar({ Component, pageProps }) {
               onClick={() => handleMenuChange(menu)}
               className="menu"
               onMouseEnter={() => handleMouseEnter(menu.id)}
-              onMouseLeave={(e) => handleMouseMove(e)}
+              onMouseLeave={(e) => handleMouseMove(e, menu.id)}
             >
               <div
                 className={`menu-icon ${

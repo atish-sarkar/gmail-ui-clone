@@ -110,15 +110,13 @@ const labelListItems = [
 ];
 
 function MailDrawer({ isHoverTheme, setHoverOn }) {
-  // console.log("hoverOn", hoverOn);
+  // console.log("isHoverTheme", isHoverTheme);
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState(
     isHoverTheme ? {} : firstListItems[0]
   );
-  function handleLeave(e) {
-    const { clientX, clientY } = e;
-    if (clientX > 8 && clientX < 58 && clientY) {
-    }
+  function handleLeave() {
+    setHoverOn(null);
   }
   return (
     <div
@@ -131,7 +129,9 @@ function MailDrawer({ isHoverTheme, setHoverOn }) {
         }`}
       >
         <div
-          className={`compose-mail pointer ${isHoverTheme ? "remove-bg" : ""}`}
+          className={`compose-mail pointer ${
+            isHoverTheme ? "remove-bg" : "normal-hover"
+          }`}
         >
           <MdModeEditOutline size={26} color="black" />
           <span className="compose-mail-text">Compose</span>
